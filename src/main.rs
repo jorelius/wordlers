@@ -26,6 +26,9 @@ impl RustleGame {
         }
     }
 
+    /**
+     * Display user guesses
+     */
     fn display_guesses(&mut self) {
         self.guesses.iter().enumerate().for_each(|(guess_number, guess)| {
             print!("{}: ", guess_number+1);
@@ -44,6 +47,9 @@ impl RustleGame {
         })
     }
 
+    /**
+     * Display guess letter validation
+     */ 
     fn display_invalid_letters(&self) {
         if !self.guessed_letters.is_empty() {
             print!("Letters not in the word: ");
@@ -53,6 +59,9 @@ impl RustleGame {
         }
     }
 
+    /**
+     * Ask User for a guess
+     */
     fn ask_for_guess(&mut self) -> String {
         println!(
             "{}",
@@ -77,6 +86,9 @@ impl RustleGame {
         guess
     }
 
+    /**
+     * Display end of game status
+     */
     fn is_game_over(&self, guess: &str) -> bool {
         let n_tries = self.guesses.len();
         if guess == self.word {
@@ -91,6 +103,9 @@ impl RustleGame {
     }
 }
 
+/** 
+ * Main Game loop
+ */
 fn main() {
     let mut game = RustleGame::new();
     loop {
@@ -102,6 +117,9 @@ fn main() {
     }
 }
 
+/**
+ * Extract word list from all words string
+ */
 fn words_list() -> Vec<String> {
     ALL_WORDS
         .split('\n')
@@ -111,6 +129,9 @@ fn words_list() -> Vec<String> {
         .collect()
 }
 
+/**
+ * Sanitize string (uppercase, alphabetical characters)
+ */
 fn sanitize_word(word: &str) -> String {
     word.trim()
         .to_uppercase()
