@@ -1,4 +1,4 @@
-# wordlers
+# wordleRS
 rust console implementation of wordle
 
 
